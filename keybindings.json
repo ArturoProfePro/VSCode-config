@@ -1,0 +1,166 @@
+[
+	// --- ОСНОВНЫЕ НАСТРОЙКИ И РЕЖИМЫ ---
+	// Выход в Normal mode по "jj" в Insert mode
+	{
+		"key": "j",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Insert' && vim.active",
+		"args": { "after": ["<Esc>"] }
+	},
+	// Вход в режим команд по ";" вместо ":"
+	{
+		"key": ";",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal' && vim.active",
+		"args": { "after": [":"] }
+	},
+
+	// --- СОХРАНЕНИЕ И ВЫХОД (Ctrl+S, Ctrl+Q) ---
+	{
+		"key": "ctrl+s",
+		"command": "workbench.action.files.save",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+q",
+		"command": "workbench.action.closeActiveEditor"
+	},
+
+	// --- ВЫДЕЛИТЬ ВСЁ (Ctrl+A) во всех режимах ---
+	{
+		"key": "ctrl+a",
+		"command": "editor.action.selectAll",
+		"when": "editorTextFocus"
+	},
+
+	// --- НАВИГАЦИЯ В INSERT MODE (Alt + hjkl) ---
+	{
+		"key": "alt+h",
+		"command": "cursorLeft",
+		"when": "editorTextFocus && vim.mode == 'Insert'"
+	},
+	{
+		"key": "alt+j",
+		"command": "cursorDown",
+		"when": "editorTextFocus && vim.mode == 'Insert'"
+	},
+	{
+		"key": "alt+k",
+		"command": "cursorUp",
+		"when": "editorTextFocus && vim.mode == 'Insert'"
+	},
+	{
+		"key": "alt+l",
+		"command": "cursorRight",
+		"when": "editorTextFocus && vim.mode == 'Insert'"
+	},
+
+	// --- ПЕРЕКЛЮЧЕНИЕ ТАБОВ (g1 - g9, g0) ---
+	{
+		"key": "g 1",
+		"command": "workbench.action.openEditorAtIndex1",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+	{
+		"key": "g 2",
+		"command": "workbench.action.openEditorAtIndex2",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+	{
+		"key": "g 3",
+		"command": "workbench.action.openEditorAtIndex3",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+	{
+		"key": "g 4",
+		"command": "workbench.action.openEditorAtIndex4",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+	{
+		"key": "g 5",
+		"command": "workbench.action.openEditorAtIndex5",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+	{
+		"key": "g 6",
+		"command": "workbench.action.openEditorAtIndex6",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+	{
+		"key": "g 7",
+		"command": "workbench.action.openEditorAtIndex7",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+	{
+		"key": "g 8",
+		"command": "workbench.action.openEditorAtIndex8",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+	{
+		"key": "g 9",
+		"command": "workbench.action.openEditorAtIndex9",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+	{
+		"key": "g 0",
+		"command": "workbench.action.lastEditorInGroup",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+
+	// --- ТЕРМИНАЛ И LAZYGIT (Alt+i, Leader+l+g) ---
+	// Toggle встроенного терминала по Alt+i (в редакторе и самом терминале)
+	{
+		"key": "alt+i",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	// Открытие LazyGit (требуется расширение "LazyGit" от kaliutau в VS Code)
+	{
+		"key": "space l g",
+		"command": "lazygit.openLazygit",
+		"when": "editorTextFocus && vim.mode == 'Normal'"
+	},
+
+	// --- НАВИГАЦИЯ МЕЖДУ СЛИТАМИ/ОКНАМИ (Взамен Tmux/Nvim Navigator) ---
+	// Перемещение фокуса по Ctrl+hjkl (работает и из терминала)
+	{
+		"key": "ctrl+h",
+		"command": "workbench.action.navigateLeft"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "workbench.action.navigateDown"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "workbench.action.navigateUp"
+	},
+	{
+		"key": "ctrl+l",
+		"command": "workbench.action.navigateRight"
+	},
+
+	// --- АНАЛОГ KULALA (HTTP Client) ---
+	// Требуется расширение "REST Client" (humao.rest-client)
+	{
+		"key": "space R s",
+		"command": "rest-client.send-request",
+		"when": "editorTextFocus && vim.mode == 'Normal' && editorLangId == 'http'"
+	},
+	{
+		"key": "space R e",
+		"command": "rest-client.switch-environment",
+		"when": "editorTextFocus && vim.mode == 'Normal' && editorLangId == 'http'"
+	},
+
+	// --- ПРОВОДНИК (Аналог NvimTree по Ctrl+N) ---
+	{
+		"key": "ctrl+n",
+		"command": "workbench.action.toggleSidebarVisibility"
+	},
+	// Позволяет закрывать проводник по Ctrl+N, даже если фокус находится внутри самого проводника
+	{
+		"key": "ctrl+n",
+		"command": "workbench.action.toggleSidebarVisibility",
+		"when": "filesExplorerFocus"
+	}
+]
